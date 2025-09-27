@@ -110,16 +110,20 @@ $fullPath = "$logDir\$fileName`_$timestamp.txt"
 
 # Start logging
 "==== Network Test Log - $timestamp ====" | Out-File -FilePath $fullPath
+
 # Ping to Server
 "`n--- [Ping to 192.168.1.10] ---" | Out-File -Append $fullPath
 ping 192.168.1.10 | Out-File -Append $fullPath
 
+# TCP
 "`n--- [iPerf3 TCP Test to 192.168.1.10] ---" | Out-File -Append $fullPath
 C:\iperf3\iperf3.exe -c 192.168.1.10 | Out-File -Append $fullPath
 
+# UDP
 "`n--- [iPerf3 UDP Test to 192.168.1.10] ---" | Out-File -Append $fullPath
 C:\iperf3\iperf3.exe -c 192.168.1.10 -u | Out-File -Append $fullPath
 
+# Traceroute
 "`n--- [Traceroute to 192.168.1.10] ---" | Out-File -Append $fullPath
 tracert 192.168.1.10 | Out-File -Append $fullPath
 
