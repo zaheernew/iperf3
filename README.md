@@ -70,6 +70,11 @@ PS C:\iperf3> .\iperf3.exe -s
 
 This starts iPerf3 in **server mode**, waiting for client connections.
 
+# 📊 Output
+
+<img width="770" height="421" alt="server-output" src="https://github.com/user-attachments/assets/bd580291-8c71-49a5-a8be-c31833b567bc" />
+
+
 ---
 
 ### 💻 Client Side
@@ -89,6 +94,10 @@ Now run the automated PowerShell test script:
 ```powershell
 PS C:\iperf3> .\network_test.ps1
 ```
+# 📊 Output
+
+<img width="963" height="410" alt="image" src="https://github.com/user-attachments/assets/23ed396c-06a5-4616-930e-b90cdc58b45f" />
+
 
 ---
 
@@ -166,6 +175,10 @@ PS C:\iperf3> Get-ExecutionPolicy -List
 * ✅ iPerf3 UDP test results (jitter, packet loss, throughput)
 * ✅ Traceroute (network path analysis)
 * ✅ Saved in `C:\iperf_logs\` with timestamped filenames
+
+# 📊 Output
+
+<img width="667" height="862" alt="image" src="https://github.com/user-attachments/assets/4a7bccb7-553e-4322-9ded-333988e3c815" />
 
 ---
 
