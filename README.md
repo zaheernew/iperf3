@@ -1,10 +1,9 @@
 # 🚀 iPerf3 - Network Bandwidth & Throughput Testing
 
+**iPerf3** is a **powerful open-source tool** used for measuring **bandwidth** and **throughput** between two network nodes. It’s widely used for **performance testing, benchmarking, and troubleshooting** in LAN/WAN environments.
 
+<img width="460" height="463" alt="iperf3-1-small-1" src="https://github.com/user-attachments/assets/8e0bad0c-2826-4369-bf04-56de944016ca" />
 
-iPerf3 is a **powerful open-source tool** used for measuring **bandwidth** and **throughput** between two network nodes. It’s widely used for **performance testing, benchmarking, and troubleshooting** in LAN/WAN environments.
-
-With iPerf3, you can measure:
 
 * 📶 **Bandwidth** (maximum data transfer capacity)
 * 📊 **Throughput** (actual achieved transfer rate)
@@ -43,10 +42,18 @@ With iPerf3, you can measure:
 ## 🎯 Purpose of iPerf3
 
 ✔️ Measures **maximum TCP and UDP bandwidth**
+
 ✔️ Supports **client/server mode**
+
 ✔️ Tests **one-way or bidirectional traffic**
+
 ✔️ Logs results for **performance analysis**
+
 ✔️ Cross-platform (Linux, Windows, macOS)
+
+---
+
+⬇️ **Download iPerf3:** [Click Here](https://iperf.fr/iperf-download.php)
 
 ---
 
@@ -58,7 +65,7 @@ With iPerf3, you can measure:
 # Open the iperf folder
 # Log on to PowerShell (inside the folder)
 
-PS C:\iperf3.18_64> .\iperf3.exe -s
+PS C:\iperf3> .\iperf3.exe -s
 ```
 
 This starts iPerf3 in **server mode**, waiting for client connections.
@@ -71,16 +78,16 @@ This starts iPerf3 in **server mode**, waiting for client connections.
 # Open the iperf folder
 # Log on to PowerShell (inside the folder)
 
-# Allow script execution
-PS C:\iperf> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-PS C:\iperf> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# Allow script execution - Pre-request
+PS C:\iperf3> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+PS C:\iperf3> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 # Press 'A' to confirm
 ```
 
 Now run the automated PowerShell test script:
 
 ```powershell
-PS C:\iperf> .\network_test.ps1
+PS C:\iperf3> .\network_test.ps1
 ```
 
 ---
@@ -103,18 +110,18 @@ $fullPath = "$logDir\$fileName`_$timestamp.txt"
 
 # Start logging
 "==== Network Test Log - $timestamp ====" | Out-File -FilePath $fullPath
+# Ping to Server
+"`n--- [Ping to 192.168.1.10] ---" | Out-File -Append $fullPath
+ping 192.168.1.10 | Out-File -Append $fullPath
 
-"`n--- [Ping to 10.72.32.21] ---" | Out-File -Append $fullPath
-ping 10.72.32.21 | Out-File -Append $fullPath
+"`n--- [iPerf3 TCP Test to 192.168.1.10] ---" | Out-File -Append $fullPath
+C:\iperf3\iperf3.exe -c 192.168.1.10 | Out-File -Append $fullPath
 
-"`n--- [iPerf3 TCP Test to 10.72.32.20] ---" | Out-File -Append $fullPath
-C:\iperf\iperf3.exe -c 10.72.32.20 | Out-File -Append $fullPath
+"`n--- [iPerf3 UDP Test to 192.168.1.10] ---" | Out-File -Append $fullPath
+C:\iperf3\iperf3.exe -c 192.168.1.10 -u | Out-File -Append $fullPath
 
-"`n--- [iPerf3 UDP Test to 10.72.32.20] ---" | Out-File -Append $fullPath
-C:\iperf\iperf3.exe -c 10.72.32.20 -u | Out-File -Append $fullPath
-
-"`n--- [Traceroute to 10.72.32.21] ---" | Out-File -Append $fullPath
-tracert 10.72.32.21 | Out-File -Append $fullPath
+"`n--- [Traceroute to 192.168.1.10] ---" | Out-File -Append $fullPath
+tracert 192.168.1.10 | Out-File -Append $fullPath
 
 "`n==== End of Log ====" | Out-File -Append $fullPath
 
@@ -130,20 +137,20 @@ Write-Host "✅ Log saved to: $fullPath"
 
    ```powershell
    PS C:\Windows\system32> cd C:\
-   PS C:\> cd .\iperf3.18_64\
+   PS C:\> cd .\iperf3\
    ```
 3. Run the script:
 
    ```powershell
-   PS C:\iperf3.18_64> .\network_test.ps1
+   PS C:\iperf3> .\network_test.ps1
    ```
 
 🔧 If script execution fails:
 
 ```powershell
-PS C:\iperf3.18_64> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-PS C:\iperf3.18_64> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-PS C:\iperf3.18_64> Get-ExecutionPolicy -List
+PS C:\iperf3> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+PS C:\iperf3> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+PS C:\iperf3> Get-ExecutionPolicy -List
 ```
 
 ---
